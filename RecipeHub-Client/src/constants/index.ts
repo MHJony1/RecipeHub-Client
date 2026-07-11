@@ -1,7 +1,7 @@
 export const ROUTES = {
   HOME: '/',
   RECIPES: '/recipes',
-  RECIPE_DETAILS: (id: string) => `/recipes/${id}`,
+  RECIPE_DETAILS: (slug: string) => `/recipes/${slug}`,
   LOGIN: '/login',
   REGISTER: '/register',
   DASHBOARD: '/dashboard',

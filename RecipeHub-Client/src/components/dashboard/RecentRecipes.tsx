@@ -68,7 +68,7 @@ export const RecentRecipes = ({ recipes }: RecentRecipesProps) => {
                   <p className="text-sm text-gray-600 mb-4 flex-1">{createdDate}</p>
 
                   <Button size="sm" variant="secondary" className="w-full">
-                    <Link href={ROUTES.RECIPE_DETAILS(recipe._id)}>View Details</Link>
+                    <Link href={ROUTES.RECIPE_DETAILS(recipe.slug)}>View Details</Link>
                   </Button>
                 </div>
               </Card>

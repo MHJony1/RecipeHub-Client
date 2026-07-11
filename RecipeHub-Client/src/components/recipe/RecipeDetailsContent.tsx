@@ -226,7 +226,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link href={ROUTES.RECIPE_DETAILS(relRecipe._id)}>
+                  <Link href={ROUTES.RECIPE_DETAILS(relRecipe.slug)}>
                     <Card className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer h-full">
                       <div className="relative h-40 w-full overflow-hidden bg-gray-200">
                         {relRecipe.image ? (

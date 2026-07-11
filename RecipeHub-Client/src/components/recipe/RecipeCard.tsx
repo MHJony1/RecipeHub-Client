@@ -69,7 +69,7 @@ export const RecipeCard = ({ recipe, index = 0 }: RecipeCardProps) => {
           </div>
 
           <Button size="sm" variant="secondary" className="w-full">
-            <Link href={ROUTES.RECIPE_DETAILS(recipe._id)}>View Details</Link>
+            <Link href={ROUTES.RECIPE_DETAILS(recipe.slug)}>View Details</Link>
           </Button>
         </div>
       </Card>
