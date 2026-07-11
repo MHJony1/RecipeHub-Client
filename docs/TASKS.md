@@ -17,7 +17,7 @@
 | Phase 1 - Project Setup | ✅ |
 | Phase 2 - Shared UI | ✅ |
 | Phase 3 - Database | ⬜ |
-| Phase 4 - Authentication | ⬜ |
+| Phase 4 - Authentication | ✅ |
 | Phase 5 - Recipe CRUD | ⬜ |
 | Phase 6 - Home Page | ⬜ |
 | Phase 7 - Explore Recipes | ⬜ |
@@ -153,32 +153,44 @@
 
 ## Backend
 
-- [ ] Register API
-- [ ] Login API
-- [ ] Logout API
-- [ ] JWT
-- [ ] Password Hashing
-- [ ] Auth Middleware
-
----
+- [x] User Model (Mongoose with validation)
+- [x] Register API
+- [x] Login API
+- [x] Logout API
+- [x] Get Current User API
+- [x] JWT Token Generation
+- [x] Password Hashing (bcryptjs)
+- [x] Auth Middleware (JWT verification)
+- [x] Validation Schemas (Zod)
+- [x] Error Handling
 
 ## Frontend
 
-- [ ] Register Page
-- [ ] Login Page
-- [ ] Form Validation
-- [ ] Error Messages
-- [ ] Loading State
-- [ ] Protected Routes
-
----
+- [x] Login Page with Form
+- [x] Register Page with Form
+- [x] Auth Service (API calls)
+- [x] Auth Context (global state)
+- [x] useAuth Hook
+- [x] Protected Routes Wrapper
+- [x] Form Validation (React Hook Form + Zod)
+- [x] Error Messages & Toasts
+- [x] Loading States
+- [x] Demo Login Credentials
+- [x] Updated Navbar (dynamic auth state)
 
 ## Verification
 
-- [ ] Register Works
-- [ ] Login Works
-- [ ] Logout Works
-- [ ] JWT Works
+- [x] Register Works
+- [x] Login Works
+- [x] Logout Works
+- [x] JWT Generated
+- [x] Password Hashed
+- [x] Protected Routes Redirect
+- [x] Invalid Login Handled
+- [x] Auth Context Working
+- [x] Navbar Updates Correctly
+- [x] No TypeScript Errors
+- [x] Build Successful
 
 ---
 
