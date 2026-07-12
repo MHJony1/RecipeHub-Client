@@ -67,7 +67,7 @@ export const Newsletter = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full font-display font-semibold"
+                className="w-full font-display font-semibold bg-secondary hover:bg-secondary/90 text-white"
                 isLoading={isLoading}
                 disabled={isLoading || !email}
               >

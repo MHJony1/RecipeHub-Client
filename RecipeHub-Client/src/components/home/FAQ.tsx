@@ -59,7 +59,7 @@ const AccordionItem = ({ item, isOpen, onToggle }: AccordionItemProps) => {
         onClick={onToggle}
         className="w-full px-6 py-5 flex items-center justify-between hover:bg-accent/5 transition-colors"
       >
-        <h3 className="font-display font-semibold text-text text-left">{item.question}</h3>
+        <h3 className="font-body font-semibold text-text text-left text-base">{item.question}</h3>
         <ChevronDown
           size={20}
           className={`text-primary transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}

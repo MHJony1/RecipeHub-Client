@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/common/Container';
 import { ROUTES } from '@/constants';
@@ -114,7 +115,7 @@ export const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: Premium Image Treatment */}
+          {/* Right: Premium Food Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -125,24 +126,25 @@ export const Hero = () => {
               {/* Premium gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-secondary/20 z-10" />
 
-              {/* Hero image placeholder with premium styling */}
-              <div className="w-full h-full bg-gradient-to-br from-secondary/20 via-accent/10 to-primary/20 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-8xl mb-4 drop-shadow-lg">🍽️</div>
-                  <p className="font-display text-2xl text-primary font-bold">RecipeHub</p>
-                  <p className="text-text-secondary font-body text-sm mt-2">Premium Recipe Platform</p>
-                </div>
-              </div>
+              {/* High-quality food image from Unsplash */}
+              <Image
+                src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=800&q=80"
+                alt="Gourmet plated dish - RecipeHub"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
 
               {/* Decorative border */}
               <div className="absolute inset-0 border-2 border-accent/30 rounded-2xl pointer-events-none" />
             </div>
 
-            {/* Floating card accent */}
+            {/* Floating card accent - positioned on top of image */}
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
-              className="absolute bottom-8 right-0 bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg border border-border/20 w-64"
+              className="absolute bottom-8 right-0 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-lg border border-border/20 w-64 z-20"
             >
               <p className="font-display text-sm text-primary font-bold">Trending</p>
               <p className="font-body text-text font-semibold mt-2">Mediterranean Cuisine</p>

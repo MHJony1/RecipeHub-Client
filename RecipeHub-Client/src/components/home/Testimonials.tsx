@@ -12,7 +12,6 @@ interface Testimonial {
   role: string;
   comment: string;
   rating: number;
-  avatar: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -22,7 +21,6 @@ const testimonials: Testimonial[] = [
     role: 'Home Cook',
     comment: 'RecipeHub has completely transformed how I cook at home. The recipes are easy to follow and the community is so supportive!',
     rating: 5,
-    avatar: '👩‍🍳',
   },
   {
     id: 2,
@@ -30,7 +28,6 @@ const testimonials: Testimonial[] = [
     role: 'Food Blogger',
     comment: 'I love sharing my recipes on RecipeHub. The platform makes it easy to connect with other food enthusiasts and get feedback.',
     rating: 5,
-    avatar: '👨‍🍳',
   },
   {
     id: 3,
@@ -38,9 +35,24 @@ const testimonials: Testimonial[] = [
     role: 'Busy Parent',
     comment: 'Finding quick and healthy recipes for my family has never been easier. RecipeHub saves me so much time!',
     rating: 5,
-    avatar: '👩‍💼',
   },
 ];
+
+const avatarColors = ['bg-primary', 'bg-secondary', 'bg-accent'];
+
+const InitialAvatar = ({ name, color }: { name: string; color: string }) => {
+  const initials = name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase();
+
+  return (
+    <div className={`${color} w-12 h-12 rounded-full flex items-center justify-center text-white font-display font-bold text-sm`}>
+      {initials}
+    </div>
+  );
+};
 
 export const Testimonials = () => {
   const containerVariants = {
@@ -59,11 +71,11 @@ export const Testimonials = () => {
         <SectionTitle title="What Our Users Say" description="Real testimonials from our amazing community." />
 
         <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6" variants={containerVariants} initial="hidden" animate="visible">
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <motion.div key={testimonial.id} variants={itemVariants}>
               <Card className="hover:shadow-lg transition-all h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-5">
-                  <div className="text-5xl">{testimonial.avatar}</div>
+                  <InitialAvatar name={testimonial.name} color={avatarColors[index % 3]} />
                   <div>
                     <h3 className="font-display font-bold text-text">{testimonial.name}</h3>
                     <p className="font-body text-sm text-text-secondary">{testimonial.role}</p>
