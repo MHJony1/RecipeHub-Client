@@ -114,7 +114,7 @@ export const DashboardContent = () => {
             <RecentRecipes recipes={recipes} />
           ) : (
             <div className="text-center py-12">
-              <p className="text-gray-600 mb-6">You haven't created any recipes yet.</p>
+              <p className="text-gray-600 mb-6">You haven&apos;t created any recipes yet.</p>
               <QuickActions />
             </div>
           )}

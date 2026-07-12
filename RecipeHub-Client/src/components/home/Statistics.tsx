@@ -17,8 +17,6 @@ interface StatData {
   contributors: number;
 }
 
-const CHART_COLORS = ['#6b2737', '#a89968', '#d4a574', '#8b6b63', '#9d7f77', '#b39789', '#c4a79b', '#d5b9ad'];
-
 export const Statistics = () => {
   const [stats, setStats] = useState<StatData>({ total: 0, categories: 0, avgCookingTime: 0, contributors: 0 });
   const [chartData, setChartData] = useState<any[]>([]);
@@ -29,14 +27,14 @@ export const Statistics = () => {
       try {
         setIsLoading(true);
         const response = await recipeService.getRecipes({ limit: 100 });
-        const recipes = response.data || [];
+        const recipes = (response.data || []) as Array<{ category: string; cookingTime: number; createdBy: string }>;
 
         const totalRecipes = recipes.length;
-        const categories = new Set(recipes.map((r: any) => r.category)).size;
+        const categories = new Set(recipes.map((r) => r.category)).size;
         const avgCookingTime = recipes.length
-          ? Math.round(recipes.reduce((sum: number, r: any) => sum + r.cookingTime, 0) / recipes.length)
+          ? Math.round(recipes.reduce((sum: number, r) => sum + r.cookingTime, 0) / recipes.length)
           : 0;
-        const contributors = new Set(recipes.map((r: any) => r.createdBy)).size;
+        const contributors = new Set(recipes.map((r) => r.createdBy)).size;
 
         setStats({
           total: totalRecipes,
@@ -46,7 +44,7 @@ export const Statistics = () => {
         });
 
         const categoryCounts: Record<string, number> = {};
-        recipes.forEach((recipe: any) => {
+        recipes.forEach((recipe) => {
           categoryCounts[recipe.category] = (categoryCounts[recipe.category] || 0) + 1;
         });
 

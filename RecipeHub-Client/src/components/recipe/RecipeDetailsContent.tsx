@@ -61,7 +61,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Recipe Not Found</h1>
-          <p className="text-gray-600 mb-8">Sorry, we couldn't find the recipe you're looking for.</p>
+          <p className="text-gray-600 mb-8">Sorry, we couldn&apos;t find the recipe you&apos;re looking for.</p>
           <Button>
             <Link href={ROUTES.RECIPES}>Back to Recipes</Link>
           </Button>

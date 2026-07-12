@@ -98,7 +98,7 @@ export default function ContactPage() {
           <div className="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-3xl border border-gray-200">
             {submitted && (
               <div className="mb-8 p-4 bg-green-50 border border-green-200 rounded-xl text-green-800">
-                <p className="font-medium">Thank you for your message! We'll get back to you soon.</p>
+                <p className="font-medium">Thank you for your message! We&apos;ll get back to you soon.</p>
               </div>
             )}
 
