@@ -36,7 +36,7 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen overflow-hidden pt-24 pb-20 lg:pt-32 lg:pb-32">
       {/* Premium gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-accent/10" />
+      <div className="absolute inset-0 bg-linear-to-br from-background via-background to-accent/10" />
 
       {/* Decorative elements */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl" />
@@ -58,7 +58,7 @@ export const Hero = () => {
               >
                 Discover Culinary Excellence
               </h1>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-full" />
+              <div className="w-24 h-1 bg-linear-to-r from-primary via-secondary to-accent rounded-full" />
             </div>
 
             <motion.p
@@ -124,7 +124,7 @@ export const Hero = () => {
           >
             <div className="relative w-full h-96 md:h-full rounded-2xl overflow-hidden">
               {/* Premium gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-secondary/20 z-10" />
+              <div className="absolute inset-0 bg-linear-to-br from-primary/30 via-transparent to-secondary/20 z-10" />
 
               {/* High-quality food image from Unsplash */}
               <Image

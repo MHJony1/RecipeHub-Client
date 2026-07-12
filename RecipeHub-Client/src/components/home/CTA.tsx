@@ -16,7 +16,7 @@ export const CTA = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-r from-primary via-primary/95 to-secondary/75">
+    <section className="py-24 md:py-32 bg-linear-to-r from-primary via-primary/95 to-secondary/75">
       <Container>
         <motion.div
           className="text-center text-white"

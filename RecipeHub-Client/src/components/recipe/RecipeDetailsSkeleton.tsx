@@ -7,7 +7,7 @@ export const RecipeDetailsSkeleton = () => {
   return (
     <>
       {/* Hero Section Skeleton */}
-      <section className="bg-gradient-to-b from-orange-50 to-white py-12">
+      <section className="bg-linear-to-b from-orange-50 to-white py-12">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">

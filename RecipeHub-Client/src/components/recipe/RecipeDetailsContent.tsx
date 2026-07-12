@@ -80,7 +80,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
     <>
       {/* Hero Section */}
       <motion.section
-        className="bg-gradient-to-b from-background via-background to-accent/5 py-16"
+        className="bg-linear-to-b from-background via-background to-accent/5 py-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
@@ -97,7 +97,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
                     priority
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-6xl bg-gradient-to-br from-secondary/30 to-accent/30">
+                  <div className="w-full h-full flex items-center justify-center text-6xl bg-linear-to-br from-secondary/30 to-accent/30">
                     🍽️
                   </div>
                 )}
@@ -156,7 +156,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
                 <div className="space-y-4">
                   {recipe.ingredients.map((ingredient, index) => (
                     <div key={index} className="flex items-start gap-4">
-                      <div className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 text-sm font-semibold mt-0.5">
+                      <div className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center shrink-0 text-sm font-semibold mt-0.5">
                         ✓
                       </div>
                       <p className="font-body text-text-secondary text-lg pt-1">{ingredient}</p>
@@ -171,7 +171,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
                 <div className="space-y-6">
                   {recipe.instructions.map((instruction, index) => (
                     <div key={index} className="flex gap-6">
-                      <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 font-display font-bold">
+                      <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 font-display font-bold">
                         {index + 1}
                       </div>
                       <p className="font-body text-text-secondary text-lg pt-1">{instruction}</p>
@@ -230,7 +230,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
                 >
                   <Link href={ROUTES.RECIPE_DETAILS(relRecipe.slug)}>
                     <Card className="overflow-hidden hover:shadow-lg transition-all cursor-pointer h-full hover:-translate-y-1">
-                      <div className="relative h-40 w-full overflow-hidden bg-gradient-to-br from-accent/20 to-secondary/20">
+                      <div className="relative h-40 w-full overflow-hidden bg-linear-to-br from-accent/20 to-secondary/20">
                         {relRecipe.image ? (
                           <Image
                             src={relRecipe.image}
@@ -239,11 +239,11 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
                             className="object-cover hover:scale-105 transition-transform duration-300"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-3xl bg-gradient-to-br from-secondary/30 to-accent/30">
+                          <div className="w-full h-full flex items-center justify-center text-3xl bg-linear-to-br from-secondary/30 to-accent/30">
                             🍽️
                           </div>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-primary/20 via-transparent to-transparent" />
                       </div>
                       <div className="p-5">
                         <h3 className="font-display font-bold text-text line-clamp-2 mb-3">{relRecipe.title}</h3>
@@ -259,7 +259,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
       )}
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary via-primary/95 to-secondary/75">
+      <section className="py-16 bg-linear-to-r from-primary via-primary/95 to-secondary/75">
         <Container>
           <motion.div
             className="text-center text-white"

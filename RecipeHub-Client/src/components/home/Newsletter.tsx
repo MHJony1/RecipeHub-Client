@@ -36,7 +36,7 @@ export const Newsletter = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-r from-primary via-primary/90 to-secondary/80">
+    <section className="py-24 md:py-32 bg-linear-to-r from-primary via-primary/90 to-secondary/80">
       <Container>
         <motion.div
           className="max-w-2xl mx-auto"

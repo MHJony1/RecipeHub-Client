@@ -29,7 +29,7 @@ export const RecipeCard = ({ recipe, index = 0 }: RecipeCardProps) => {
   return (
     <motion.div variants={variants} whileHover="hover" initial="hidden" animate="visible">
       <Card className="overflow-hidden h-full flex flex-col hover:shadow-xl transition-all">
-        <div className="relative w-full overflow-hidden bg-gradient-to-br from-accent/20 to-secondary/20 rounded-xl" style={{ aspectRatio: '16/9' }}>
+        <div className="relative w-full overflow-hidden bg-linear-to-br from-accent/20 to-secondary/20 rounded-xl" style={{ aspectRatio: '16/9' }}>
           {recipe.image ? (
             <Image
               src={recipe.image}
@@ -39,12 +39,12 @@ export const RecipeCard = ({ recipe, index = 0 }: RecipeCardProps) => {
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-secondary/30 to-accent/30 text-5xl">
+            <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-secondary/30 to-accent/30 text-5xl">
               🍽️
             </div>
           )}
           {/* Premium overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-t from-primary/20 via-transparent to-transparent pointer-events-none" />
         </div>
 
         <div className="p-5 flex-1 flex flex-col">

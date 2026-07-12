@@ -114,7 +114,7 @@ export default function AddRecipePage() {
                   <div className="space-y-4 mb-6">
                     {ingredients.map((ingredient, index) => (
                       <div key={index} className="flex gap-3">
-                        <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 text-sm font-semibold">
+                        <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 text-sm font-semibold">
                           {index + 1}
                         </div>
                         <input
@@ -155,7 +155,7 @@ export default function AddRecipePage() {
                   <div className="space-y-4 mb-6">
                     {instructions.map((instruction, index) => (
                       <div key={index} className="flex gap-3">
-                        <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 text-sm font-display font-bold">
+                        <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0 text-sm font-display font-bold">
                           {index + 1}
                         </div>
                         <textarea

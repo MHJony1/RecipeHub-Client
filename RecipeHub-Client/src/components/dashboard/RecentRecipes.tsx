@@ -52,7 +52,7 @@ export const RecentRecipes = ({ recipes }: RecentRecipesProps) => {
                       className="object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20 text-3xl">
+                    <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-primary/20 to-secondary/20 text-3xl">
                       🍽️
                     </div>
                   )}

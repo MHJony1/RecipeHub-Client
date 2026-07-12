@@ -17,7 +17,7 @@ export const WelcomeCard = ({ userName }: WelcomeCardProps) => {
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-      <Card className="bg-gradient-to-br from-primary via-primary to-secondary text-white p-8 border-0 shadow-lg">
+      <Card className="bg-linear-to-br from-primary via-primary to-secondary text-white p-8 border-0 shadow-lg">
         <div className="flex justify-between items-start">
           <div className="flex-1">
             <h1 className="font-display text-3xl md:text-4xl font-bold mb-2">Welcome back, {userName}! 👋</h1>

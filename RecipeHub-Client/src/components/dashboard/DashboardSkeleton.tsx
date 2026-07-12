@@ -24,7 +24,7 @@ export const DashboardSkeleton = () => {
         {/* Main Content Skeleton */}
         <div className="lg:col-span-3 space-y-8">
           {/* Welcome Card */}
-          <div className="h-32 bg-gradient-to-r from-gray-200 to-gray-300 animate-pulse rounded-2xl" />
+          <div className="h-32 bg-linear-to-r from-gray-200 to-gray-300 animate-pulse rounded-2xl" />
 
           {/* Statistics Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
