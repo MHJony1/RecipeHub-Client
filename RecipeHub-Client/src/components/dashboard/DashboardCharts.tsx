@@ -30,35 +30,35 @@ export const DashboardCharts = ({ recipes }: DashboardChartsProps) => {
     >
       {/* Category Distribution */}
       <Card className="p-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-6">Recipes by Category</h3>
+        <h3 className="font-display text-lg font-bold text-text mb-6">Recipes by Category</h3>
         {chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#d4a574" />
               <XAxis dataKey="name" />
               <YAxis />
               <Tooltip />
-              <Bar dataKey="count" fill="#F97316" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="count" fill="#6b2737" radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <p className="text-gray-600 text-center py-8">No data available</p>
+          <p className="font-body text-text-secondary text-center py-8">No data available</p>
         )}
       </Card>
 
       {/* Quick Info */}
       <Card className="p-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-6">Recipe Summary</h3>
+        <h3 className="font-display text-lg font-bold text-text mb-6">Recipe Summary</h3>
         <div className="space-y-4">
           {chartData.length > 0 ? (
             chartData.map((item) => (
-              <div key={item.name} className="flex justify-between items-center pb-4 border-b last:border-b-0">
-                <span className="text-gray-700">{item.name}</span>
-                <span className="font-bold text-orange-500 text-lg">{item.count}</span>
+              <div key={item.name} className="flex justify-between items-center pb-4 border-b border-accent/20 last:border-b-0">
+                <span className="font-body text-text">{item.name}</span>
+                <span className="font-display font-bold text-primary text-lg">{item.count}</span>
               </div>
             ))
           ) : (
-            <p className="text-gray-600">No recipes yet</p>
+            <p className="font-body text-text-secondary">No recipes yet</p>
           )}
         </div>
       </Card>

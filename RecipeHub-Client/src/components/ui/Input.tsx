@@ -9,7 +9,7 @@ export const Input = ({ label, error, className, id, ...props }: InputProps) => 
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={id} className="block text-sm font-medium text-gray-900 mb-2">
+        <label htmlFor={id} className="block text-sm font-medium text-text mb-2">
           {label}
         </label>
       )}
@@ -17,7 +17,7 @@ export const Input = ({ label, error, className, id, ...props }: InputProps) => 
         {...props}
         id={id}
         className={cn(
-          'w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition-all',
+          'w-full px-4 py-3 border-2 border-accent/30 rounded-xl bg-white text-text placeholder-text-secondary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-body',
           error && 'border-red-500 focus:ring-red-200',
           className
         )}

@@ -33,29 +33,29 @@ export const StatisticsCards = ({ stats }: StatisticsCardsProps) => {
       icon: BookOpen,
       title: 'Total Recipes',
       value: stats.totalRecipes,
-      color: 'text-blue-500',
-      bgColor: 'bg-blue-50',
+      color: 'text-primary',
+      bgColor: 'bg-primary/10',
     },
     {
       icon: Tag,
       title: 'Categories',
       value: stats.categoriesUsed,
-      color: 'text-green-500',
-      bgColor: 'bg-green-50',
+      color: 'text-secondary',
+      bgColor: 'bg-secondary/10',
     },
     {
       icon: Clock,
       title: 'Avg Cooking Time',
       value: `${stats.avgCookingTime}m`,
-      color: 'text-orange-500',
-      bgColor: 'bg-orange-50',
+      color: 'text-accent',
+      bgColor: 'bg-accent/10',
     },
     {
       icon: Calendar,
       title: 'Latest Recipe',
       value: latestDate,
-      color: 'text-purple-500',
-      bgColor: 'bg-purple-50',
+      color: 'text-primary',
+      bgColor: 'bg-primary/5',
     },
   ];
 
@@ -75,8 +75,8 @@ export const StatisticsCards = ({ stats }: StatisticsCardsProps) => {
               <div className={`${card.bgColor} p-3 rounded-lg mb-4 w-fit`}>
                 <Icon className={`${card.color} w-7 h-7`} />
               </div>
-              <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-2">{card.title}</p>
-              <p className="text-3xl font-bold text-gray-900">{card.value}</p>
+              <p className="text-xs text-text-secondary uppercase tracking-wider font-semibold mb-2">{card.title}</p>
+              <p className="font-display text-3xl font-bold text-text">{card.value}</p>
             </Card>
           </motion.div>
         );

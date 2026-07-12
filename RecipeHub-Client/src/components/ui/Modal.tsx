@@ -37,7 +37,7 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md', scrollabl
     >
       <div
         className={cn(
-          'bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col',
+          'bg-white rounded-2xl shadow-2xl border border-accent/20 flex flex-col',
           'w-[90vw] h-[90vh] sm:w-auto sm:h-auto',
           scrollable ? 'max-h-[90vh]' : '',
           sizes[size]
@@ -45,11 +45,11 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md', scrollabl
         onClick={(e) => e.stopPropagation()}
       >
         {title && (
-          <div className="flex justify-between items-center p-6 border-b border-gray-200 shrink-0">
-            <h2 className="text-xl font-bold text-gray-900">{title}</h2>
+          <div className="flex justify-between items-center p-6 border-b border-accent/20 shrink-0">
+            <h2 className="font-display text-2xl font-bold text-text">{title}</h2>
             <button
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 rounded"
+              className="text-text-secondary hover:text-text transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 rounded"
               aria-label="Close modal"
             >
               <X size={20} />

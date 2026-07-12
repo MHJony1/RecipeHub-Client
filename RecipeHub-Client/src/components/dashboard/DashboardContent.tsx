@@ -91,7 +91,7 @@ export const DashboardContent = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 p-4 md:p-8">
         {/* Sidebar */}
         <div className="lg:col-span-1">
@@ -114,7 +114,7 @@ export const DashboardContent = () => {
             <RecentRecipes recipes={recipes} />
           ) : (
             <div className="text-center py-12">
-              <p className="text-gray-600 mb-6">You haven&apos;t created any recipes yet.</p>
+              <p className="font-body text-text-secondary mb-6">You haven&apos;t created any recipes yet.</p>
               <QuickActions />
             </div>
           )}

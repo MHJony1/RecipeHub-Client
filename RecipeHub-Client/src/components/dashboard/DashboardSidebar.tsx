@@ -35,10 +35,10 @@ export const DashboardSidebar = () => {
           return (
             <Link key={item.href} href={item.href}>
               <div
-                className={`flex items-center gap-3 px-6 py-4 transition-colors ${
+                className={`flex items-center gap-3 px-6 py-4 transition-colors font-body ${
                   isActive
-                    ? 'bg-orange-500 text-white border-l-4 border-orange-600'
-                    : 'text-gray-700 hover:bg-gray-50 border-l-4 border-transparent'
+                    ? 'bg-primary text-white border-l-4 border-primary/50'
+                    : 'text-text hover:bg-accent/10 border-l-4 border-transparent'
                 }`}
               >
                 <Icon size={20} />
@@ -49,7 +49,7 @@ export const DashboardSidebar = () => {
         })}
       </nav>
 
-      <div className="border-t p-4">
+      <div className="border-t border-accent/20 p-4">
         <Button
           variant="danger"
           size="sm"

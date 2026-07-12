@@ -27,8 +27,8 @@ export const RecentRecipes = ({ recipes }: RecentRecipesProps) => {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">Recent Recipes</h2>
-        <p className="text-gray-600 mt-1">Your latest creations</p>
+        <h2 className="font-display text-2xl font-bold text-text">Recent Recipes</h2>
+        <p className="font-body text-text-secondary mt-1">Your latest creations</p>
       </div>
 
       <motion.div
@@ -43,7 +43,7 @@ export const RecentRecipes = ({ recipes }: RecentRecipesProps) => {
           return (
             <motion.div key={recipe._id} variants={itemVariants}>
               <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
-                <div className="relative h-40 w-full overflow-hidden bg-gray-200">
+                <div className="relative h-40 w-full overflow-hidden bg-accent/20">
                   {recipe.image ? (
                     <Image
                       src={recipe.image}
@@ -52,22 +52,22 @@ export const RecentRecipes = ({ recipes }: RecentRecipesProps) => {
                       className="object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-200 to-amber-200 text-3xl">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20 text-3xl">
                       🍽️
                     </div>
                   )}
                 </div>
 
                 <div className="p-4 flex-1 flex flex-col">
-                  <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">{recipe.title}</h3>
+                  <h3 className="font-display font-bold text-text mb-2 line-clamp-2">{recipe.title}</h3>
 
                   <div className="flex gap-2 mb-4">
-                    <Badge variant="default">{recipe.category}</Badge>
+                    <Badge className="bg-primary/10 text-primary border-primary/30">{recipe.category}</Badge>
                   </div>
 
-                  <p className="text-sm text-gray-600 mb-4 flex-1">{createdDate}</p>
+                  <p className="font-body text-sm text-text-secondary mb-4 flex-1">{createdDate}</p>
 
-                  <Button size="sm" variant="secondary" className="w-full">
+                  <Button size="sm" variant="secondary" className="w-full font-body">
                     <Link href={ROUTES.RECIPE_DETAILS(recipe.slug)}>View Details</Link>
                   </Button>
                 </div>
