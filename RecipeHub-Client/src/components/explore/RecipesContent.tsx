@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { Container } from '@/components/common/Container';
 import { RecipeGrid } from '@/components/recipe/RecipeGrid';
 import { SearchBar } from '@/components/explore/SearchBar';
@@ -25,7 +25,6 @@ interface Filters {
 
 export const RecipesContent = () => {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -106,7 +105,8 @@ export const RecipesContent = () => {
     if (filters.page > 1) params.set('page', filters.page.toString());
 
     const query = params.toString();
-    router.push(query ? `/recipes?${query}` : '/recipes');
+    const url = query ? `/recipes?${query}` : '/recipes';
+    window.history.replaceState(null, '', url);
   };
 
   const handleSearch = (query: string) => {
