@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --primary: #6b2737;
+  --secondary: #a89968;
+  --accent: #d4a574;
+  --background: #f5f1ed;
+  --text: #1a1a1a;
+  --text-secondary: #6b6b6b;
+  --border: #d4a574;
+  --success: #6b2737;
+  --warning: #d4a574;
+  --danger: #ef4444;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-body, sans-serif);
+  line-height: 1.6;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display, serif);
+    letter-spacing: -0.02em;
+  }
+
+  .font-body {
+    font-family: var(--font-body, sans-serif);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display, serif);
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 72px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: 48px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  small, .text-sm {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
