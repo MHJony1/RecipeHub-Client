@@ -7,6 +7,5 @@ export { Select } from './Select';
 export { LoadingSpinner } from './LoadingSpinner';
 export { SkeletonCard } from './SkeletonCard';
 export { Modal } from './Modal';
-export { Pagination } from './Pagination';
 export { EmptyState } from './EmptyState';
 export { ErrorState } from './ErrorState';

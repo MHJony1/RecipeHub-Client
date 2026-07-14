@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'react-hot-toast';
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import { recipeSchema, type RecipeFormData } from '@/lib/recipe-validations';
 import { recipeService, type Recipe } from '@/services/recipe.service';
 import { ProtectedRoute } from '@/components/common/ProtectedRoute';
@@ -33,6 +33,8 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 const difficultyLevels = [
   { label: 'Easy', value: 'Easy' },
@@ -180,7 +182,7 @@ export default function ManageRecipesPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: 'easeOut' },
+      transition: { duration: 0.4, ease: easeOut },
     },
   };
 
@@ -381,7 +383,7 @@ export default function ManageRecipesPage() {
             isOpen={deleteModalOpen}
             onClose={() => setDeleteModalOpen(false)}
             title="Delete Recipe"
-            className="max-w-md"
+            size="md"
           >
             <div className="space-y-6 p-2">
               <div className="text-center">
@@ -422,7 +424,6 @@ export default function ManageRecipesPage() {
             title="Update Recipe"
             size="3xl"
             scrollable={true}
-            className="max-w-4xl"
           >
             <form
               onSubmit={handleSubmit(handleUpdate)}

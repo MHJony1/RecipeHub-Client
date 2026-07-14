@@ -13,7 +13,7 @@ import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import {
   Sparkles,
   User,
@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 
 export default function RegisterPage() {
+  const easeOut: Easing = [0.42, 0, 0.58, 1];
   const router = useRouter();
   const searchParams = useSearchParams();
   const { register: registerUser } = useAuth();
@@ -71,7 +72,7 @@ export default function RegisterPage() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.6, ease: easeOut }}
           className="max-w-md mx-auto"
         >
           <Card className="bg-white border border-[#F4A261]/10 rounded-3xl shadow-2xl shadow-[#E07A2F]/8 p-8 sm:p-10">

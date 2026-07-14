@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 import { Container } from '@/components/common/Container';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
@@ -96,7 +98,7 @@ export const Newsletter = () => {
           className="max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.6, ease: easeOut }}
         >
           <Card className="bg-white/95 backdrop-blur-sm border border-white/30 shadow-2xl shadow-[#E07A2F]/20 p-6 sm:p-8 md:p-10 lg:p-12">
             {/* Header */}
@@ -152,7 +154,6 @@ export const Newsletter = () => {
                         ? 'border-red-400 focus:border-red-500'
                         : 'border-[#F4A261]/30 focus:border-[#E07A2F]'
                     } bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-[#E07A2F]/20 transition-all duration-300 text-sm sm:text-base`}
-                    placeholder="Enter your email address"
                   />
                   {error && (
                     <p className="text-red-500 text-xs mt-1.5 font-medium">

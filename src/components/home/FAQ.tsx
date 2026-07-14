@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Easing } from 'framer-motion';
+
+const easeInOut: Easing = [0.43, 0.13, 0.57, 0.87];
 import { Container } from '@/components/common/Container';
 import { SectionTitle } from '@/components/common/SectionTitle';
 import { Card } from '@/components/ui/Card';
@@ -158,7 +160,7 @@ const AccordionItem = ({
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ duration: 0.3, ease: easeInOut }}
               className="border-t border-[#F4A261]/10"
             >
               <div className="px-4 sm:px-5 md:px-6 py-4 sm:py-5 md:py-6">

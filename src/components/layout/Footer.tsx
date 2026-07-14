@@ -1,12 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import { ROUTES } from '@/constants';
 import { Container } from '@/components/common/Container';
 import { Envelope, MapPin, ArrowUp, LogoFacebook } from '@gravity-ui/icons';
 import { Phone } from 'lucide-react';
 import { FaSquareXTwitter, FaInstagram, FaYoutube } from 'react-icons/fa6';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,7 +33,7 @@ export const Footer = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: 'easeOut' },
+      transition: { duration: 0.4, ease: easeOut },
     },
   };
 

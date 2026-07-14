@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { motion } from 'framer-motion';
 import { Container } from '@/components/common/Container';
 import { SectionTitle } from '@/components/common/SectionTitle';
 
@@ -13,14 +12,6 @@ export const metadata: Metadata = {
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
 
 export default function PrivacyPage() {
   const sections = [
@@ -71,19 +62,14 @@ Types of Data Collected:
       {/* Hero Section */}
       <section className="py-20 border-b border-accent/20">
         <Container>
-          <motion.div
-            className="max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="max-w-3xl mx-auto">
             <h1 className="font-display text-5xl md:text-6xl font-bold text-text mb-6">
               Privacy Policy
             </h1>
             <p className="font-body text-text-secondary">
               Last updated: January 2025
             </p>
-          </motion.div>
+          </div>
         </Container>
       </section>
 
@@ -92,21 +78,14 @@ Types of Data Collected:
         <Container>
           <div className="max-w-3xl mx-auto space-y-12">
             {sections.map((section, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-              >
+              <div key={idx}>
                 <h2 className="font-display text-2xl font-bold text-text mb-4 pb-3 border-b border-accent/20">
                   {section.title}
                 </h2>
                 <div className="font-body text-text-secondary whitespace-pre-line leading-relaxed">
                   {section.content}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </Container>
@@ -116,25 +95,14 @@ Types of Data Collected:
       <section className="py-20 border-t border-accent/20">
         <Container>
           <div className="max-w-3xl mx-auto space-y-12">
-            <motion.div
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
+            <div>
               <h2 className="font-display text-2xl font-bold text-text mb-4 pb-3 border-b border-accent/20">Data Retention</h2>
               <p className="font-body text-text-secondary leading-relaxed">
                 RecipeHub will retain your Personal Data only for as long as necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
+            <div>
               <h2 className="font-display text-2xl font-bold text-text mb-4 pb-3 border-b border-accent/20">Your Rights</h2>
               <p className="font-body text-text-secondary leading-relaxed mb-4">
                 You have the right to:
@@ -165,33 +133,21 @@ Types of Data Collected:
                   <span>Withdraw consent</span>
                 </li>
               </ul>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
+            <div>
               <h2 className="font-display text-2xl font-bold text-text mb-4 pb-3 border-b border-accent/20">Third-Party Services</h2>
               <p className="font-body text-text-secondary leading-relaxed">
                 Our service may contain links to third-party websites and applications that are not operated by us. This Privacy Policy applies only to information we collect, and we are not responsible for third-party privacy practices. We encourage you to review the privacy policies of any third-party services before providing your personal information.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
+            <div>
               <h2 className="font-display text-2xl font-bold text-text mb-4 pb-3 border-b border-accent/20">Cookies</h2>
               <p className="font-body text-text-secondary leading-relaxed">
                 We use cookies and similar tracking technologies to track activity on our service and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service.
               </p>
-            </motion.div>
+            </div>
           </div>
         </Container>
       </section>

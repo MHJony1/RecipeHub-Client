@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card } from '@/components/ui/Card';
@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/Button';
 import { type Recipe } from '@/services/recipe.service';
 import { ROUTES } from '@/constants';
 import { Clock, User, ArrowRight, Sparkles } from 'lucide-react';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 interface RecentRecipesProps {
   recipes: Recipe[];
@@ -24,7 +26,7 @@ export const RecentRecipes = ({ recipes }: RecentRecipesProps) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: 'easeOut' },
+      transition: { duration: 0.4, ease: easeOut },
     },
   };
 

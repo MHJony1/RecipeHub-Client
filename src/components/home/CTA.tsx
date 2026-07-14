@@ -1,12 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import Link from 'next/link';
 import { Container } from '@/components/common/Container';
 import { Button } from '@/components/ui/Button';
 import { ROUTES } from '@/constants';
 import { useAuth } from '@/providers/AuthContext';
 import { ArrowRight, Sparkles, Heart } from 'lucide-react';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 export const CTA = () => {
   const { isAuthenticated } = useAuth();
@@ -17,7 +19,7 @@ export const CTA = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.6, ease: easeOut }}
           className="relative overflow-hidden rounded-3xl sm:rounded-4xl bg-gradient-to-br from-[#FFFBF7] to-[#FDF5EC] border border-[#F4A261]/20 shadow-xl shadow-[#F4A261]/5 p-8 sm:p-10 md:p-14 lg:p-16"
         >
           {/* Decorative Elements */}

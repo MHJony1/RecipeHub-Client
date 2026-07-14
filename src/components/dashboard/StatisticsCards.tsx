@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import { Card } from '@/components/ui/Card';
 import {
   BookOpen,
@@ -8,6 +8,8 @@ import {
   Clock,
   Calendar,
 } from 'lucide-react';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 interface StatisticsCardsProps {
   stats: {
@@ -29,7 +31,7 @@ export const StatisticsCards = ({ stats }: StatisticsCardsProps) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: 'easeOut' },
+      transition: { duration: 0.4, ease: easeOut },
     },
   };
 

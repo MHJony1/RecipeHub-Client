@@ -1,12 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import { Container } from '@/components/common/Container';
 import { Card } from '@/components/ui/Card';
 import { Zap, Users, Search, Clock, Sparkles, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
 import { Button } from '@/components/ui/Button';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 interface Feature {
   icon: React.ReactNode;
@@ -63,11 +65,11 @@ export const WhyChooseUs = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: 'easeOut' },
+      transition: { duration: 0.5, ease: easeOut },
     },
     hover: {
       y: -8,
-      transition: { duration: 0.3, ease: 'easeOut' },
+      transition: { duration: 0.3, ease: easeOut },
     },
   };
 

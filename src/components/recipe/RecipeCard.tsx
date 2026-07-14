@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ROUTES } from '@/constants';
@@ -15,6 +15,8 @@ import {
 import { type Recipe } from '@/services/recipe.service';
 import { cn } from '@/utils/cn';
 import { useState } from 'react';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -50,12 +52,12 @@ export const RecipeCard = ({
       transition: {
         duration: 0.5,
         delay: index * 0.06,
-        ease: 'easeOut',
+        ease: easeOut,
       },
     },
     hover: {
       y: -6,
-      transition: { duration: 0.3, ease: 'easeOut' },
+      transition: { duration: 0.3, ease: easeOut },
     },
   };
 
@@ -145,12 +147,6 @@ export const RecipeCard = ({
               >
                 {recipe.difficulty}
               </span>
-              {recipe.rating !== undefined && recipe.rating !== null && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#E9C46A]/10 text-[#2D1B0E] border border-[#E9C46A]/20">
-                  <Star className="w-3 h-3 fill-[#E9C46A] text-[#E9C46A]" />
-                  {(recipe.rating as number).toFixed(1)}
-                </span>
-              )}
             </div>
           </div>
 
@@ -251,15 +247,6 @@ export const RecipeCard = ({
           </span>
         </div>
 
-        {/* Rating Badge */}
-        {recipe.rating && (
-          <div className="absolute bottom-3 right-3 z-20 flex items-center gap-1 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full shadow-lg border border-[#F4A261]/20">
-            <Star className="w-3 h-3 fill-[#E9C46A] text-[#E9C46A]" />
-            <span className="text-xs font-semibold text-[#2D1B0E]">
-              {recipe.rating.toFixed(1)}
-            </span>
-          </div>
-        )}
       </Link>
 
       {/* Content */}

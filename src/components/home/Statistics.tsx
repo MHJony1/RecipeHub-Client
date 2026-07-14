@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 import { Container } from '@/components/common/Container';
 import { SectionTitle } from '@/components/common/SectionTitle';
 import { Card } from '@/components/ui/Card';
@@ -128,7 +130,7 @@ export const Statistics = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: 'easeOut' },
+      transition: { duration: 0.4, ease: easeOut },
     },
   };
 
@@ -333,7 +335,7 @@ export const Statistics = () => {
                       axisLine={false}
                       tickLine={false}
                       interval={0}
-                      tick={{ fontSize: 9, sm: { fontSize: 11 } }}
+                      tick={{ fontSize: 10 }}
                     />
                     <YAxis
                       stroke="#7A6B5A"
@@ -341,7 +343,7 @@ export const Statistics = () => {
                       axisLine={false}
                       tickLine={false}
                       allowDecimals={false}
-                      tick={{ fontSize: 9, sm: { fontSize: 11 } }}
+                      tick={{ fontSize: 10 }}
                     />
                     <Tooltip
                       contentStyle={{

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Container } from '@/components/common/Container';
@@ -8,6 +8,8 @@ import { Card } from '@/components/ui/Card';
 import { RECIPE_CATEGORIES, ROUTES } from '@/constants';
 import { Sparkles, ArrowRight} from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+
+const easeOut: Easing = [0.42, 0, 0.58, 1];
 
 // Category Images
 const categoryImages: Record<string, string> = {
@@ -80,11 +82,11 @@ export const Categories = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: 'easeOut' },
+      transition: { duration: 0.5, ease: easeOut },
     },
     hover: {
       y: -8,
-      transition: { duration: 0.3, ease: 'easeOut' },
+      transition: { duration: 0.3, ease: easeOut },
     },
   };
 

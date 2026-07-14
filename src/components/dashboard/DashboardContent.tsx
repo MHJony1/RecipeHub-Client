@@ -46,11 +46,11 @@ export const DashboardContent = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await recipeService.getUserRecipes(1, 5);
+        const response = await recipeService.getUserRecipes();
         const userRecipes = response.data || [];
         setRecipes(userRecipes);
 
-        const allRecipesResponse = await recipeService.getUserRecipes(1, 100);
+        const allRecipesResponse = await recipeService.getUserRecipes();
         const allRecipes = allRecipesResponse.data || [];
 
         const categories = new Set(allRecipes.map((r) => r.category));

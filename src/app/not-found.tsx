@@ -1,9 +1,13 @@
+'use client';
+
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, type Easing } from 'framer-motion';
 import { Container } from '@/components/common/Container';
 import { Button } from '@/components/ui/Button';
 import { ROUTES } from '@/constants';
 import { Home, Search } from 'lucide-react';
+
+const easeInOut: Easing = [0.43, 0.13, 0.57, 0.87];
 
 export default function NotFound() {
   const containerVariants = {
@@ -32,7 +36,7 @@ export default function NotFound() {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: 'easeInOut',
+        ease: easeInOut,
       },
     },
   };
@@ -49,7 +53,6 @@ export default function NotFound() {
           {/* 404 Text */}
           <motion.div
             className="mb-8"
-            variants={itemVariants}
             animate="animate"
             variants={floatingVariants}
           >
