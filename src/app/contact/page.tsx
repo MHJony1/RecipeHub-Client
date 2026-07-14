@@ -46,7 +46,10 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
+    transition: { 
+      duration: 0.5, 
+      ease: 'easeOut' as const 
+    },
   },
 };
 
@@ -63,7 +66,6 @@ export default function ContactPage() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      // আসল এপিআই কলের জন্য এখানে স্ট্রাকচার রেডি রাখা হয়েছে
       await new Promise((resolve) => setTimeout(resolve, 800));
       console.log('Form submitted:', data);
       setSubmitted(true);
