@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Container } from '@/components/common/Container';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -30,7 +30,7 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -41,7 +41,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -63,13 +63,14 @@ export default function ContactPage() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      // আসল এপিআই কলের জন্য এখানে স্ট্রাকচার রেডি রাখা হয়েছে
+      await new Promise((resolve) => setTimeout(resolve, 800));
       console.log('Form submitted:', data);
       setSubmitted(true);
       reset();
       setTimeout(() => setSubmitted(false), 5000);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error submitting contact form:', error);
     }
   };
 
