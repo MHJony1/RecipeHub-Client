@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, Easing } from 'framer-motion';
 import { Container } from '@/components/common/Container';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -30,6 +30,8 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
+const easeOut: Easing = 'easeOut';
+
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -46,9 +48,9 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.5, 
-      ease: 'easeOut' as const 
+    transition: {
+      duration: 0.5,
+      ease: easeOut,
     },
   },
 };
