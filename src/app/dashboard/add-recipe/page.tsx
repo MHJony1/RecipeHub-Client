@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'react-hot-toast';
 import { recipeSchema, type RecipeFormData } from '@/lib/recipe-validations';
 import { recipeService } from '@/services/recipe.service';
+import { imageService } from '@/services/image.service';
 import { ProtectedRoute } from '@/components/common/ProtectedRoute';
 import { Container } from '@/components/common/Container';
 import { Card } from '@/components/ui/Card';
@@ -26,6 +27,7 @@ import {
   Image as ImageIcon,
   Send,
   Plus,
+  Upload,
 } from 'lucide-react';
 
 const difficultyLevels = [
@@ -39,11 +41,17 @@ export default function AddRecipeClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [ingredients, setIngredients] = useState<string[]>(['']);
   const [instructions, setInstructions] = useState<string[]>(['']);
+  const [imageMode, setImageMode] = useState<'url' | 'upload'>('url');
+  const [previewUrl, setPreviewUrl] = useState<string>('');
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string>('');
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setValue,
   } = useForm<RecipeFormData>({
     resolver: zodResolver(recipeSchema),
     defaultValues: {
@@ -51,6 +59,64 @@ export default function AddRecipeClient() {
       instructions: [''],
     },
   });
+
+  const imageValue = watch('image');
+
+  const handleImageFileSelect = async (file: File) => {
+    setUploadError('');
+
+    const validation = imageService.validateImageFile(file);
+    if (!validation.valid) {
+      setUploadError(validation.error || 'Invalid image');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setPreviewUrl(e.target?.result as string);
+    };
+    reader.readAsDataURL(file);
+
+    setIsUploading(true);
+    try {
+      const uploadedUrl = await imageService.uploadToImgBB(file);
+      setValue('image', uploadedUrl);
+      toast.success('Image uploaded successfully!');
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Failed to upload image';
+      setUploadError(errorMsg);
+      toast.error(errorMsg);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleModeChange = (mode: 'url' | 'upload') => {
+    setImageMode(mode);
+    setPreviewUrl('');
+    setUploadError('');
+    setValue('image', '');
+  };
+
+  const handleRemoveImage = () => {
+    setPreviewUrl('');
+    setValue('image', '');
+    setUploadError('');
+  };
+
+  const handleDragOver = (e: React.DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const file = e.dataTransfer.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+      handleImageFileSelect(file);
+    }
+  };
 
   const onSubmit = async (data: RecipeFormData) => {
     setIsSubmitting(true);
@@ -272,21 +338,115 @@ export default function AddRecipeClient() {
                     </div>
 
                     <div>
-                      <label className="block font-medium text-[#2D1B0E] text-sm mb-1.5">
-                        Image URL
+                      <label className="block font-medium text-[#2D1B0E] text-sm mb-3">
+                        Recipe Image
                       </label>
-                      <div className="relative">
-                        <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7A6B5A]" />
-                        <Input
-                          {...register('image')}
-                          placeholder="https://example.com/image.jpg"
-                          className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
-                            errors.image
-                              ? 'border-red-400 focus:border-red-500'
-                              : 'border-[#F4A261]/30 focus:border-[#E07A2F]'
-                          } bg-white/80 focus:outline-none focus:ring-2 focus:ring-[#E07A2F]/20 transition-all duration-300 text-sm`}
-                        />
+
+                      {/* Image Mode Toggle */}
+                      <div className="flex gap-2 mb-4">
+                        <button
+                          type="button"
+                          onClick={() => handleModeChange('url')}
+                          className={`flex-1 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 border ${
+                            imageMode === 'url'
+                              ? 'bg-[#E07A2F] text-white border-[#E07A2F]'
+                              : 'bg-white text-[#7A6B5A] border-[#F4A261]/30 hover:border-[#E07A2F]/50'
+                          }`}
+                        >
+                          Paste URL
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleModeChange('upload')}
+                          className={`flex-1 px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 border ${
+                            imageMode === 'upload'
+                              ? 'bg-[#E07A2F] text-white border-[#E07A2F]'
+                              : 'bg-white text-[#7A6B5A] border-[#F4A261]/30 hover:border-[#E07A2F]/50'
+                          }`}
+                        >
+                          Upload Image
+                        </button>
                       </div>
+
+                      {/* URL Input Mode */}
+                      {imageMode === 'url' && (
+                        <div className="relative">
+                          <ImageIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7A6B5A]" />
+                          <Input
+                            {...register('image')}
+                            placeholder="https://example.com/image.jpg"
+                            className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
+                              errors.image
+                                ? 'border-red-400 focus:border-red-500'
+                                : 'border-[#F4A261]/30 focus:border-[#E07A2F]'
+                            } bg-white/80 focus:outline-none focus:ring-2 focus:ring-[#E07A2F]/20 transition-all duration-300 text-sm`}
+                          />
+                        </div>
+                      )}
+
+                      {/* Upload Mode */}
+                      {imageMode === 'upload' && (
+                        <div className="space-y-3">
+                          {!previewUrl && !isUploading && (
+                            <label
+                              onDragOver={handleDragOver}
+                              onDrop={handleDrop}
+                              className="flex flex-col items-center justify-center gap-3 p-6 rounded-xl border-2 border-dashed border-[#F4A261]/40 hover:border-[#E07A2F] bg-[#F4A261]/5 hover:bg-[#E07A2F]/5 cursor-pointer transition-all duration-300"
+                            >
+                              <Upload className="w-6 h-6 text-[#E07A2F]" />
+                              <div className="text-center">
+                                <p className="font-medium text-[#2D1B0E] text-sm">
+                                  Click to upload or drag & drop
+                                </p>
+                                <p className="text-[#7A6B5A] text-xs mt-1">
+                                  JPG, PNG, WebP, GIF (Max 5MB)
+                                </p>
+                              </div>
+                              <input
+                                type="file"
+                                accept="image/jpeg,image/png,image/webp,image/gif"
+                                onChange={(e) => {
+                                  const file = e.target.files?.[0];
+                                  if (file) handleImageFileSelect(file);
+                                }}
+                                className="hidden"
+                              />
+                            </label>
+                          )}
+
+                          {isUploading && (
+                            <div className="flex items-center justify-center gap-2 p-6 rounded-xl border-2 border-dashed border-[#F4A261]/40 bg-[#F4A261]/5">
+                              <div className="w-4 h-4 border-2 border-[#F4A261] border-t-[#E07A2F] rounded-full animate-spin" />
+                              <p className="text-[#E07A2F] text-xs font-medium">Uploading image...</p>
+                            </div>
+                          )}
+
+                          {previewUrl && !isUploading && (
+                            <div className="relative inline-block w-full">
+                              <img
+                                src={previewUrl}
+                                alt="Preview"
+                                className="w-full h-48 object-cover rounded-xl border border-[#F4A261]/30"
+                              />
+                              <button
+                                type="button"
+                                onClick={handleRemoveImage}
+                                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 hover:bg-black/70 flex items-center justify-center transition-all duration-300"
+                                title="Remove image"
+                              >
+                                <X size={18} className="text-white" />
+                              </button>
+                            </div>
+                          )}
+
+                          {uploadError && (
+                            <div className="p-3 rounded-lg bg-red-50 border border-red-200">
+                              <p className="text-red-600 text-xs font-medium">{uploadError}</p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
                       {errors.image && (
                         <p className="text-red-500 text-xs mt-1.5">
                           {errors.image.message}

@@ -51,14 +51,12 @@ export const Navbar = () => {
     setIsUserMenuOpen(false);
   };
 
+  // ✅ Navigation Links - Login করলে শুধু Dashboard দেখাবে
   const navLinks = [
     { label: 'Home', href: ROUTES.HOME, icon: Home },
     { label: 'Recipes', href: ROUTES.RECIPES, icon: BookOpen },
     ...(isAuthenticated
-      ? [
-          { label: 'Dashboard', href: ROUTES.DASHBOARD, icon: LayoutDashboard },
-          { label: 'Add Recipe', href: ROUTES.ADD_RECIPE, icon: PlusCircle },
-        ]
+      ? [{ label: 'Dashboard', href: ROUTES.DASHBOARD, icon: LayoutDashboard }]
       : []),
     { label: 'About', href: ROUTES.ABOUT, icon: Info },
     { label: 'Contact', href: ROUTES.CONTACT, icon: Phone },
@@ -164,10 +162,16 @@ export const Navbar = () => {
                         <div className="p-1">
                           {[
                             { label: 'Profile', icon: User, href: '/profile' },
+                            // ✅ Add Recipe এখানে যোগ করা হয়েছে (Profile এর জায়গায় নয়, বরং নতুন আইটেম হিসেবে)
+                            {
+                              label: 'Add Recipe',
+                              icon: PlusCircle,
+                              href: ROUTES.ADD_RECIPE,
+                            },
                             {
                               label: 'My Recipes',
                               icon: BookOpen,
-                              href: '/manage-recipes',
+                              href: ROUTES.MANAGE_RECIPES,
                             },
                           ].map((item) => (
                             <Link
@@ -180,6 +184,7 @@ export const Navbar = () => {
                               {item.label}
                             </Link>
                           ))}
+                          <div className="border-t border-[#F4A261]/10 my-1" />
                           <button
                             onClick={handleLogout}
                             className="flex items-center gap-2 w-full px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-red-500 hover:bg-red-50 transition-all text-xs sm:text-sm"

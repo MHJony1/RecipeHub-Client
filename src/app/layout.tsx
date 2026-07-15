@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: 'RecipeHub - Discover & Share Recipes',
   description: 'Discover amazing recipes and share your culinary creations with the world.',
   keywords: ['recipes', 'cooking', 'food', 'culinary'],
+  icons: {
+    icon: '/recipelogo.png',
+  },
   openGraph: {
     title: 'RecipeHub',
     description: 'Discover amazing recipes and share your culinary creations',

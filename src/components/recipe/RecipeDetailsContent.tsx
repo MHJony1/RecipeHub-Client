@@ -22,6 +22,10 @@ import {
   UtensilsCrossed,
   ListChecks,
   FileText,
+  Tag,
+  Star,
+  Users,
+  Eye,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -151,15 +155,16 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
               <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-[#E07A2F] rounded-br-xl" />
             </div>
 
-            {/* Info - Right Side */}
-            <div className="flex flex-col justify-center space-y-4">
+            {/* Info - Right Side - Premium */}
+            <div className="flex flex-col justify-center space-y-5">
               {/* Badges */}
               <div className="flex flex-wrap gap-2">
-                <Badge className="bg-[#E07A2F]/10 text-[#E07A2F] border-[#E07A2F]/20 rounded-full px-3 py-1 text-xs font-medium">
+                <Badge className="bg-[#E07A2F]/10 text-[#E07A2F] border-[#E07A2F]/20 rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1">
+                  <Tag className="w-3 h-3" />
                   {recipe.category}
                 </Badge>
                 <Badge
-                  className={`rounded-full px-3 py-1 text-xs font-medium border ${
+                  className={`rounded-full px-3 py-1 text-xs font-medium border flex items-center gap-1 ${
                     recipe.difficulty === 'Easy'
                       ? 'bg-emerald-500/10 text-emerald-600 border-emerald-500/20'
                       : recipe.difficulty === 'Medium'
@@ -167,6 +172,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
                         : 'bg-rose-500/10 text-rose-600 border-rose-500/20'
                   }`}
                 >
+                  <Star className="w-3 h-3" />
                   {recipe.difficulty}
                 </Badge>
               </div>
@@ -181,47 +187,100 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
                 {recipe.shortDescription}
               </p>
 
-              {/* Recipe Info - Inline */}
-              <div className="flex flex-wrap items-center gap-4 text-sm text-[#2D1B0E]">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#E07A2F]" />
-                  <span>{recipe.cookingTime} minutes</span>
+              {/* Recipe Info - Premium Card Style */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-white rounded-2xl p-4 border border-[#F4A261]/10 shadow-md">
+                <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-[#F4A261]/5 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E07A2F]/20 to-[#E9C46A]/20 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-[#E07A2F]" />
+                  </div>
+                  <div>
+                    <p className="text-[#7A6B5A] text-[10px] uppercase tracking-wider font-medium">
+                      Time
+                    </p>
+                    <p className="font-semibold text-[#2D1B0E]">
+                      {recipe.cookingTime} min
+                    </p>
+                  </div>
                 </div>
-                <div className="w-px h-4 bg-[#F4A261]/20" />
-                <div className="flex items-center gap-2">
-                  <ChefHat className="w-4 h-4 text-[#E07A2F]" />
-                  <span>By {recipe.author?.name || 'Anonymous'}</span>
+
+                <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-[#F4A261]/5 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E07A2F]/20 to-[#E9C46A]/20 flex items-center justify-center flex-shrink-0">
+                    <ChefHat className="w-5 h-5 text-[#E07A2F]" />
+                  </div>
+                  <div>
+                    <p className="text-[#7A6B5A] text-[10px] uppercase tracking-wider font-medium">
+                      Chef
+                    </p>
+                    <p className="font-semibold text-[#2D1B0E] truncate">
+                      {recipe.author?.name || 'Anonymous'}
+                    </p>
+                  </div>
                 </div>
-                <div className="w-px h-4 bg-[#F4A261]/20" />
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-[#E07A2F]" />
-                  <span>{publishDate}</span>
+
+                <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-[#F4A261]/5 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E07A2F]/20 to-[#E9C46A]/20 flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 text-[#E07A2F]" />
+                  </div>
+                  <div>
+                    <p className="text-[#7A6B5A] text-[10px] uppercase tracking-wider font-medium">
+                      Published
+                    </p>
+                    <p className="font-semibold text-[#2D1B0E] text-sm">
+                      {publishDate}
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap gap-2 pt-2">
+              {/* Stats Row */}
+              <div className="flex items-center gap-6 text-[#7A6B5A]">
+                <div className="flex items-center gap-1.5">
+                  <Eye className="w-4 h-4" />
+                  <span className="text-sm">1.2k views</span>
+                </div>
+                <div className="w-px h-4 bg-[#F4A261]/20" />
+                <div className="flex items-center gap-1.5">
+                  <Heart className="w-4 h-4 fill-[#E07A2F] text-[#E07A2F]" />
+                  <span className="text-sm">84 likes</span>
+                </div>
+                <div className="w-px h-4 bg-[#F4A261]/20" />
+                <div className="flex items-center gap-1.5">
+                  <Users className="w-4 h-4" />
+                  <span className="text-sm">12 saves</span>
+                </div>
+              </div>
+
+              {/* Action Buttons - Premium Style */}
+              <div className="flex flex-wrap gap-2 pt-1">
                 <button
                   onClick={() => setIsLiked(!isLiked)}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#F4A261]/20 hover:border-[#E07A2F]/30 hover:bg-[#F4A261]/5 transition-all duration-300 text-sm"
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium ${
+                    isLiked
+                      ? 'bg-[#E07A2F] text-white shadow-md shadow-[#E07A2F]/25'
+                      : 'border border-[#F4A261]/20 hover:border-[#E07A2F]/30 hover:bg-[#F4A261]/5 text-[#7A6B5A] hover:text-[#E07A2F]'
+                  }`}
                 >
                   <Heart
-                    className={`w-4 h-4 ${isLiked ? 'fill-[#E07A2F] text-[#E07A2F]' : 'text-[#7A6B5A]'}`}
+                    className={`w-4 h-4 ${isLiked ? 'fill-white text-white' : ''}`}
                   />
-                  <span className="text-[#7A6B5A]">Like</span>
+                  <span>{isLiked ? 'Liked' : 'Like'}</span>
                 </button>
                 <button
                   onClick={() => setIsBookmarked(!isBookmarked)}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#F4A261]/20 hover:border-[#E07A2F]/30 hover:bg-[#F4A261]/5 transition-all duration-300 text-sm"
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium ${
+                    isBookmarked
+                      ? 'bg-[#E9C46A] text-white shadow-md shadow-[#E9C46A]/25'
+                      : 'border border-[#F4A261]/20 hover:border-[#E07A2F]/30 hover:bg-[#F4A261]/5 text-[#7A6B5A] hover:text-[#E07A2F]'
+                  }`}
                 >
                   <Bookmark
-                    className={`w-4 h-4 ${isBookmarked ? 'fill-[#E07A2F] text-[#E07A2F]' : 'text-[#7A6B5A]'}`}
+                    className={`w-4 h-4 ${isBookmarked ? 'fill-white text-white' : ''}`}
                   />
-                  <span className="text-[#7A6B5A]">Save</span>
+                  <span>{isBookmarked ? 'Saved' : 'Save'}</span>
                 </button>
-                <button className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#F4A261]/20 hover:border-[#E07A2F]/30 hover:bg-[#F4A261]/5 transition-all duration-300 text-sm">
-                  <Share2 className="w-4 h-4 text-[#7A6B5A]" />
-                  <span className="text-[#7A6B5A]">Share</span>
+                <button className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#F4A261]/20 hover:border-[#E07A2F]/30 hover:bg-[#F4A261]/5 transition-all duration-300 text-sm font-medium text-[#7A6B5A] hover:text-[#E07A2F]">
+                  <Share2 className="w-4 h-4" />
+                  <span>Share</span>
                 </button>
               </div>
             </div>
@@ -229,7 +288,7 @@ export const RecipeDetailsContent = ({ slug }: RecipeDetailsContentProps) => {
         </Container>
       </motion.section>
 
-      {/* Main Content - বাকি অংশ আগের মতোই থাকবে */}
+      {/* Main Content */}
       <section className="py-10 sm:py-14 md:py-20 bg-white border-t border-[#F4A261]/10">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
