@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -28,9 +28,15 @@ export default function LoginPage() {
   const easeOut: Easing = [0.42, 0, 0.58, 1];
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { login: loginUser } = useAuth();
+  const { login: loginUser, isAuthenticated, isLoading } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      router.replace(ROUTES.DASHBOARD);
+    }
+  }, [isLoading, isAuthenticated, router]);
 
   const {
     register,
@@ -54,6 +60,14 @@ export default function LoginPage() {
       setIsSubmitting(false);
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#FFFBF7] flex items-center justify-center">
+        <div className="w-10 h-10 border-4 border-[#F4A261]/30 border-t-[#E07A2F] rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#FFFBF7] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden pt-24 sm:pt-28 md:pt-32">
